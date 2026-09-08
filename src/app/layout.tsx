@@ -1,11 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Inter, Fraunces } from "next/font/google";
 import { cookies } from "next/headers";
-import { siteConfig } from "@/config/site";
-import { ThemeSettingsSync } from "@/components/theme-settings-sync";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { cn } from "@/lib/utils";
-import { parseThemeSettingsCookie, THEME_SETTINGS_KEY } from "@/lib/theme-settings";
-import StoreProvider from "./StoreProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -24,19 +22,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const cookieStore = await cookies();
-  const settings = parseThemeSettingsCookie(
-    cookieStore.get(THEME_SETTINGS_KEY)?.value,
-    siteConfig.name
-  );
-  const icon = settings.faviconUrl || settings.logoUrl;
-  return {
-    title: settings.companyName,
-    description: siteConfig.description,
-    ...(icon ? { icons: icon } : {}),
-  };
-}
+export const metadata: Metadata = {
+  title: {
+    default: "Authentic Website of ShivapuriBaba",
+    template: "%s | Shivapuri Baba",
+  },
+  description:
+    "The aim of this website is to share the teachings of The God Realized Siddha MahaPurusha Shree Shivapuri Baba, in this 21st Century to the humanity.",
+};
 
 export const viewport: Viewport = {
   themeColor: [
@@ -51,10 +44,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const cookieStore = await cookies();
-  const settings = parseThemeSettingsCookie(
-    cookieStore.get(THEME_SETTINGS_KEY)?.value,
-    siteConfig.name
-  );
   const isDark = cookieStore.get("theme")?.value === "dark";
 
   return (
@@ -68,16 +57,11 @@ export default async function RootLayout({
         "h-full antialiased",
         isDark && "dark"
       )}
-      style={
-        {
-          "--primary": settings.primaryColor,
-          fontFamily: settings.font,
-        } as React.CSSProperties
-      }
     >
       <body className="min-h-full flex flex-col">
-        <ThemeSettingsSync />
-        <StoreProvider>{children}</StoreProvider>
+        <SiteHeader />
+        <main className="flex-1">{children}</main>
+        <SiteFooter />
       </body>
     </html>
   );

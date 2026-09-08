@@ -1,32 +1,137 @@
-import { cookies } from "next/headers";
-import { Button } from "@/components/ui/button";
-import { Logo } from "@/components/logo";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { siteConfig } from "@/config/site";
-import { parseThemeSettingsCookie, THEME_SETTINGS_KEY } from "@/lib/theme-settings";
+import Link from "next/link";
+import { HeroCarousel } from "@/components/hero-carousel";
 
-export default async function Home() {
-  const cookieStore = await cookies();
-  const initialSettings = parseThemeSettingsCookie(
-    cookieStore.get(THEME_SETTINGS_KEY)?.value,
-    siteConfig.name
-  );
+const heroSlides = [
+  {
+    src: "https://web.archive.org/web/20190715142422im_/http://www.shivapuribaba.org/wp-content/uploads/2017/06/ShivapuriBaba1.jpg",
+    alt: "Shiva Puri Baba",
+    caption: "Baba at Dhruvasthali, Kathmandu",
+    href: "/about-shivapuri-baba",
+  },
+  {
+    src: "https://web.archive.org/web/20190715142422im_/http://www.shivapuribaba.org/wp-content/uploads/2017/06/bernhaddt-1160x760.jpg",
+    alt: "Baba With Devotee",
+    caption: "Baba With Devotee",
+    href: "/about-shivapuri-baba",
+  },
+  {
+    src: "https://web.archive.org/web/20190715142422im_/http://www.shivapuribaba.org/wp-content/uploads/2017/06/baba-samadhi-temple-690x450.jpg",
+    alt: "Shiva Puri Baba Samadhi Temple",
+    caption: "Baba Samadhi",
+    href: "/about-aashram",
+  },
+];
 
+const questionTeasers = [
+  {
+    q: "Is there any easier means to achieve progress in Swadharma?",
+    a: "Always keep in mind that death may occur at any time. Do duties and avoid un-necessary involvements and gossips. Then only it is possible…",
+  },
+  {
+    q: "If so, every human being, irrespective of his caste, creed, color or religion should lead Swadharma to realize God?",
+    a: "Every individual can practice Swadharma. Success and failure are common to all. The aspirant should not only seek good results and success alone. At…",
+  },
+  {
+    q: "How can we have desired goal?",
+    a: "Without dexterity and hard labour, we cannot achieve the desired goal. Those who did good works in their past life can realize God in…",
+  },
+  {
+    q: "How can we realize God immediately?",
+    a: "There are necessary duties, which you have to perform due to a human birth. Apart from spending time for the above one should spent…",
+  },
+  {
+    q: "Is there any difference between other living beings and the human?",
+    a: "Other living beings life is fixed towards instinct and reproduction but human life is Karma Bhumi or the land for discharging duties and a…",
+  },
+  {
+    q: "Are the Three Principle of Swadharma same for one and all?",
+    a: "The basic principle of Swadharma is same for all. But the implementation varies. Each individual should apply it according to time, place and circumstances.",
+  },
+  {
+    q: "Does it mean that without the practice of Swadharma, Self Realization is not possible?",
+    a: "Yes. Practice it regularly and sincerely. Where Swadharma is practiced, you will realize your Inner Self. By which in time with your sincerity God appears before…",
+  },
+  {
+    q: "Is Swadharma and Varnashrama Dharma associated with each other?",
+    a: "These days some intellectuals are interpreting Varnashrama Dharma or caste system as Swadharma, which is a wrong interpretation. Main objective of Swadharma is to perform our necessary…",
+  },
+  {
+    q: "What are the differences between Swadharma Sadhana and the practices of other religions?",
+    a: "Human beings have always been asking the questions on the mystery of life and the creation. It prevailed from the very beginning of mankind.",
+  },
+  {
+    q: "Beside these, are there any other books or teachings where we can read about Swadharma?",
+    a: "You can find them in Buddhist philosophy and they come under the Eight Noble Paths. Similarly, in Christianity there are the Ten Commandments, which…",
+  },
+];
+
+export default function Home() {
   return (
-    <div className="flex flex-col flex-1">
-      <header className="flex items-center justify-between px-8 py-4 border-b border-border">
-        <Logo initialSettings={initialSettings} />
-        <ThemeToggle />
-      </header>
-      <main className="flex flex-1 flex-col items-center justify-center gap-6 px-8 py-32 text-center">
-        <h1 className="max-w-lg text-4xl font-semibold leading-tight tracking-tight text-foreground">
-          {initialSettings.companyName}
-        </h1>
-        <p className="max-w-md text-lg leading-8 text-muted-foreground">
-          {siteConfig.description}
-        </p>
-        <Button>Get Started</Button>
-      </main>
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+      <HeroCarousel slides={heroSlides} />
+
+      <section className="mt-12 grid gap-10 sm:grid-cols-3">
+        <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+          <h2 className="mb-3 text-lg font-semibold text-primary">Mahāvākya</h2>
+          <p className="text-lg italic leading-8 text-foreground/90">
+            Live Right Life.
+            <br />
+            Worship GOD.
+            <br />
+            That is All. Nothing More.
+          </p>
+        </div>
+
+        <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+          <h2 className="mb-3 text-lg font-semibold text-primary">Welcome…</h2>
+          <p className="text-justify leading-7 text-foreground/85">
+            The aim of this website is to share the teachings of The God Realized Siddha
+            MahaPurusha Shree Shivapuri Baba, in this 21st Century to the humanity.
+          </p>
+          <Link
+            href="/about-shivapuri-baba"
+            className="mt-3 inline-block text-sm font-medium text-primary hover:underline"
+          >
+            (more&hellip;)
+          </Link>
+        </div>
+
+        <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+          <h2 className="mb-3 text-lg font-semibold text-primary">Latest News</h2>
+          <p className="text-sm text-muted-foreground">
+            See the{" "}
+            <Link href="/events" className="text-primary hover:underline">
+              Events
+            </Link>{" "}
+            and{" "}
+            <Link href="/published-article" className="text-primary hover:underline">
+              Published Article
+            </Link>{" "}
+            sections for the latest updates.
+          </p>
+        </div>
+      </section>
+
+      <section className="mt-14">
+        <div className="mb-6 flex items-baseline justify-between">
+          <h2 className="text-2xl font-semibold text-foreground">Question/Answer</h2>
+          <Link href="/questionanswer" className="text-sm font-medium text-primary hover:underline">
+            View all &rarr;
+          </Link>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {questionTeasers.map((item) => (
+            <Link
+              key={item.q}
+              href="/questionanswer"
+              className="rounded-xl border border-border bg-card p-5 shadow-sm transition-colors hover:border-primary/50 hover:bg-accent/40"
+            >
+              <p className="font-medium text-foreground">{item.q}</p>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.a}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
