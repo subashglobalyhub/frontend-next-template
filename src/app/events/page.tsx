@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageHeading } from "@/components/page-heading";
 
 export const metadata: Metadata = {
   title: "Events",
@@ -15,7 +16,7 @@ const events = [
 export default function EventsPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-      <h1 className="mb-8 text-3xl font-semibold text-foreground">Events</h1>
+      <PageHeading>Events</PageHeading>
       <div className="space-y-4">
         {events.map((event) => (
           <div

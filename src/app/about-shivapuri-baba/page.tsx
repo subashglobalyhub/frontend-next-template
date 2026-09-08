@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { RichContent } from "@/components/rich-content";
+import { PageHeading } from "@/components/page-heading";
 
 export const metadata: Metadata = {
   title: "About Mahasiddha Purusha Shree Shivapuri Baba",
@@ -25,11 +26,9 @@ export default function AboutShivapuriBabaPage() {
       <img
         src="https://web.archive.org/web/20190715142422im_/http://www.shivapuribaba.org/wp-content/uploads/2017/06/ShivapuriBaba1.jpg"
         alt="Shiva Puri Baba"
-        className="mb-8 aspect-[16/9] w-full rounded-2xl border border-border object-cover shadow-sm"
+        className="animate-in fade-in-0 mb-10 aspect-[16/9] w-full rounded-2xl border border-border object-cover shadow-sm duration-700"
       />
-      <h1 className="mb-8 text-3xl font-semibold text-foreground">
-        About Mahasiddha Purusha Shree Shivapuri Baba
-      </h1>
+      <PageHeading>About Mahasiddha Purusha Shree Shivapuri Baba</PageHeading>
       <RichContent html={content} />
     </div>
   );

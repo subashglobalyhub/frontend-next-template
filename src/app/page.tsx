@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { Quote } from "lucide-react";
 import { HeroCarousel } from "@/components/hero-carousel";
+import { SectionDivider } from "@/components/section-divider";
 
 const heroSlides = [
   {
@@ -68,12 +70,17 @@ const questionTeasers = [
 export default function Home() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
-      <HeroCarousel slides={heroSlides} />
+      <div className="animate-in fade-in-0 duration-700">
+        <HeroCarousel slides={heroSlides} />
+      </div>
 
-      <section className="mt-12 grid gap-10 sm:grid-cols-3">
-        <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-          <h2 className="mb-3 text-lg font-semibold text-primary">Mahāvākya</h2>
-          <p className="text-lg italic leading-8 text-foreground/90">
+      <section className="mt-12 grid gap-6 sm:grid-cols-3">
+        <div className="group rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <Quote className="mb-2 size-6 fill-primary/15 text-primary" />
+          <h2 className="mb-1 text-sm font-semibold tracking-wide text-primary uppercase">
+            Mahāvākya
+          </h2>
+          <p className="font-accent text-2xl leading-snug text-foreground/90">
             Live Right Life.
             <br />
             Worship GOD.
@@ -82,8 +89,10 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-          <h2 className="mb-3 text-lg font-semibold text-primary">Welcome…</h2>
+        <div className="group rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <h2 className="mb-3 text-sm font-semibold tracking-wide text-primary uppercase">
+            Welcome…
+          </h2>
           <p className="text-justify leading-7 text-foreground/85">
             The aim of this website is to share the teachings of The God Realized Siddha
             MahaPurusha Shree Shivapuri Baba, in this 21st Century to the humanity.
@@ -96,8 +105,10 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-          <h2 className="mb-3 text-lg font-semibold text-primary">Latest News</h2>
+        <div className="group rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <h2 className="mb-3 text-sm font-semibold tracking-wide text-primary uppercase">
+            Latest News
+          </h2>
           <p className="text-sm text-muted-foreground">
             See the{" "}
             <Link href="/events" className="text-primary hover:underline">
@@ -112,24 +123,31 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-14">
-        <div className="mb-6 flex items-baseline justify-between">
-          <h2 className="text-2xl font-semibold text-foreground">Question/Answer</h2>
-          <Link href="/questionanswer" className="text-sm font-medium text-primary hover:underline">
-            View all &rarr;
-          </Link>
+      <section className="mt-16">
+        <div className="mb-2 text-center">
+          <h2 className="font-heading text-2xl font-bold text-foreground">Question/Answer</h2>
+          <SectionDivider className="mt-4 mb-6" />
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
-          {questionTeasers.map((item) => (
+          {questionTeasers.map((item, i) => (
             <Link
               key={item.q}
               href="/questionanswer"
-              className="rounded-xl border border-border bg-card p-5 shadow-sm transition-colors hover:border-primary/50 hover:bg-accent/40"
+              style={{ animationDelay: `${i * 40}ms` }}
+              className="animate-in fade-in-0 slide-in-from-bottom-2 rounded-xl border border-border bg-card p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent/40 hover:shadow-md"
             >
               <p className="font-medium text-foreground">{item.q}</p>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.a}</p>
             </Link>
           ))}
+        </div>
+        <div className="mt-8 text-center">
+          <Link
+            href="/questionanswer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-accent/60 px-5 py-2 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent"
+          >
+            View all questions &rarr;
+          </Link>
         </div>
       </section>
     </div>

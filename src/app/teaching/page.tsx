@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { RichContent } from "@/components/rich-content";
+import { PageHeading } from "@/components/page-heading";
 
 export const metadata: Metadata = {
   title: "Teaching",
@@ -65,7 +66,7 @@ const content = `
 export default function TeachingPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-      <h1 className="mb-8 text-3xl font-semibold text-foreground">Teaching</h1>
+      <PageHeading>Teaching</PageHeading>
       <RichContent html={content} />
     </div>
   );

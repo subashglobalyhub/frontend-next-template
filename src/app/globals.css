@@ -7,9 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-fraunces);
+  --font-sans: var(--font-mukta);
+  --font-heading: var(--font-mukta);
+  --font-accent: var(--font-patrick-hand);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -132,8 +132,12 @@
     @apply font-sans;
   }
   h1, h2, h3, h4 {
-    @apply font-heading tracking-[-0.01em];
+    @apply font-heading font-bold tracking-[-0.01em];
   }
+}
+
+.font-accent {
+  font-family: var(--font-patrick-hand);
 }
 
 .rich-content {

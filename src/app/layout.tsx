@@ -1,25 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Inter, Fraunces } from "next/font/google";
+import { Mukta, Patrick_Hand } from "next/font/google";
 import { cookies } from "next/headers";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
+// The archived site itself loaded Google Fonts "Ek Mukta" (now renamed "Mukta")
+// and "Patrick Hand" — reused here for authenticity, with Devanagari support
+// for the Sanskrit verses quoted on the Teaching and Samadhi Mandir pages.
+const mukta = Mukta({
+  variable: "--font-mukta",
+  subsets: ["latin", "devanagari"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const patrickHand = Patrick_Hand({
+  variable: "--font-patrick-hand",
   subsets: ["latin"],
-  weight: ["600", "700"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -51,9 +50,8 @@ export default async function RootLayout({
       lang="en"
       suppressHydrationWarning
       className={cn(
-        inter.variable,
-        fraunces.variable,
-        geistMono.variable,
+        mukta.variable,
+        patrickHand.variable,
         "h-full antialiased",
         isDark && "dark"
       )}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { RichContent } from "@/components/rich-content";
+import { PageHeading } from "@/components/page-heading";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -25,7 +26,7 @@ Whosoever wants to visit Samadhi Mandir, they first need to contact one of THREE
 export default function ContactPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-      <h1 className="mb-8 text-3xl font-semibold text-foreground">Contact</h1>
+      <PageHeading>Contact</PageHeading>
       <RichContent html={content} />
     </div>
   );
