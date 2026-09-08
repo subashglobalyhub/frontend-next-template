@@ -1,6 +1,6 @@
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-secondary/40">
+    <footer className="border-t border-border bg-accent/40">
       <div className="mx-auto max-w-6xl px-4 py-8 text-center text-sm leading-relaxed text-muted-foreground sm:px-6">
         <p>
           &copy; 2017 All rights reserved. No parts of this website containing text, image and book

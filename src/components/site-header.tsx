@@ -18,20 +18,17 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/70">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link href="/" className="flex items-center gap-3">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
+        <Link href="/" className="flex shrink-0 items-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={BABA_LOGO}
-            alt="Shivapuri Baba"
+            alt="Shree Shivapuri Baba (1826-1963)"
             className="h-11 w-auto rounded-sm object-contain"
           />
-          <span className="hidden font-heading text-lg font-semibold tracking-tight text-foreground sm:block">
-            Shivapuri Baba
-          </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden min-w-0 items-center gap-0.5 xl:flex">
           {navItems.map((item) =>
             item.children ? (
               <div
@@ -43,7 +40,7 @@ export function SiteHeader() {
                 <button
                   type="button"
                   className={cn(
-                    "flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground",
+                    "flex items-center gap-1 whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground",
                     item.children.some((c) => c.href === pathname) &&
                       "bg-accent text-accent-foreground"
                   )}
@@ -74,7 +71,7 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground",
+                  "whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground",
                   pathname === item.href && "bg-accent text-accent-foreground"
                 )}
               >
@@ -84,11 +81,11 @@ export function SiteHeader() {
           )}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <ThemeToggle />
           <button
             type="button"
-            className="inline-flex size-9 items-center justify-center rounded-md border border-border lg:hidden"
+            className="inline-flex size-9 items-center justify-center rounded-md border border-border xl:hidden"
             aria-label="Toggle menu"
             onClick={() => setMobileOpen((v) => !v)}
           >
@@ -98,7 +95,7 @@ export function SiteHeader() {
       </div>
 
       {mobileOpen && (
-        <nav className="border-t border-border px-4 pb-4 lg:hidden">
+        <nav className="border-t border-border px-4 pb-4 xl:hidden">
           {navItems.map((item) => (
             <div key={item.label} className="py-1">
               <Link
