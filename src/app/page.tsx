@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Quote } from "lucide-react";
+import { Quote, Compass, ArrowRight } from "lucide-react";
 import { HeroCarousel } from "@/components/hero-carousel";
 import { SectionDivider } from "@/components/section-divider";
 
@@ -73,6 +73,24 @@ export default function Home() {
       <div className="animate-in fade-in-0 duration-700">
         <HeroCarousel slides={heroSlides} />
       </div>
+
+      <Link
+        href="/timeline"
+        className="group mt-6 flex items-center justify-between gap-4 rounded-2xl border border-primary/30 bg-accent/40 px-6 py-4 transition-colors hover:bg-accent/70"
+      >
+        <div className="flex items-center gap-3">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+            <Compass className="size-5" />
+          </span>
+          <div>
+            <p className="font-semibold text-foreground">Explore the Timeline</p>
+            <p className="text-sm text-muted-foreground">
+              Birth nakshatra, life journey, and a map of where it all began.
+            </p>
+          </div>
+        </div>
+        <ArrowRight className="size-5 shrink-0 text-primary transition-transform group-hover:translate-x-1" />
+      </Link>
 
       <section className="mt-12 grid gap-6 sm:grid-cols-3">
         <div className="group rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">

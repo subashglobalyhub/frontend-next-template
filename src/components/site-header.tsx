@@ -18,7 +18,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/70">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
         <Link href="/" className="flex shrink-0 items-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -28,7 +28,7 @@ export function SiteHeader() {
           />
         </Link>
 
-        <nav className="hidden min-w-0 items-center gap-0.5 xl:flex">
+        <nav className="hidden min-w-0 items-center gap-px xl:flex">
           {navItems.map((item) =>
             item.children ? (
               <div
@@ -40,7 +40,7 @@ export function SiteHeader() {
                 <button
                   type="button"
                   className={cn(
-                    "flex items-center gap-1 whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground",
+                    "flex items-center gap-1 whitespace-nowrap rounded-md px-2 py-2 text-[13px] font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground",
                     item.children.some((c) => c.href === pathname) &&
                       "bg-accent text-accent-foreground"
                   )}
@@ -71,7 +71,7 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground",
+                  "whitespace-nowrap rounded-md px-2 py-2 text-[13px] font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground",
                   pathname === item.href && "bg-accent text-accent-foreground"
                 )}
               >

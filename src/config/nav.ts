@@ -17,6 +17,7 @@ export const navItems: NavItem[] = [
       { label: "About Samadhi Mandir", href: "/about-aashram" },
     ],
   },
+  { label: "Timeline", href: "/timeline" },
   { label: "Pramana", href: "/pramana" },
   { label: "Question/Answer", href: "/questionanswer" },
   { label: "Charity", href: "/charity" },
