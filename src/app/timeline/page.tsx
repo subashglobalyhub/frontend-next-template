@@ -21,6 +21,17 @@ export const metadata: Metadata = {
   title: "Timeline",
 };
 
+// Photographs are hotlinked from Wikimedia Commons via its Special:FilePath
+// thumbnailing service (auto-compressed to the requested width) since no
+// photographs of these specific historical scenes exist in the archived
+// site itself. General illustrative images of the real places/figures
+// involved, not depictions of Baba himself.
+function commons(file: string, width: number) {
+  return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}?width=${width}`;
+}
+
+const astroBanner = commons("Andromeda Galaxy 2025.png", 1600);
+
 const astroFacts = [
   { icon: Star, label: "Nakshatra", value: "Mūla (मूल)" },
   { icon: Moon, label: "Hindu / Nepali Month", value: "Bhadra (भाद्र)" },
@@ -34,6 +45,8 @@ const events: {
   title: string;
   description: string;
   source: "site" | "research";
+  image: string;
+  imageAlt: string;
 }[] = [
   {
     icon: Sprout,
@@ -42,6 +55,8 @@ const events: {
     description:
       "Born into a Nambudiri Brahmin family in Malabar, Kerala, South India, under Mūla Nakshatra. His grandfather, an astrologer, had once forecast that the family lineage would end — he was in fact born a twin, alongside a sister.",
     source: "site",
+    image: commons("Kerala landscape.jpg", 900),
+    imageAlt: "Landscape of Kerala, South India",
   },
   {
     icon: TreePine,
@@ -50,6 +65,8 @@ const events: {
     description:
       "Having mastered all four Vedas by age 14, he made over his ancestral property to his twin sister and left home to join his grandfather Achyutam, who had taken to a hermit's life in the Amarkantak forest near the source of the Narmada river, Madhya Pradesh — in quest of the Truth.",
     source: "research",
+    image: commons("Amarkantak.jpg", 900),
+    imageAlt: "Forest hills of Amarkantak, Madhya Pradesh",
   },
   {
     icon: Mountain,
@@ -58,6 +75,8 @@ const events: {
     description:
       "Accompanied his grandfather to Nepal during Kot Parba — the palace massacre that brought the Rana regime to power. He visited Pashupatinath Temple and the Guhyakali Shaktipeetha before returning to India.",
     source: "site",
+    image: commons("Picturesque view of Pashupatinath Temple.jpg", 900),
+    imageAlt: "Pashupatinath Temple, Kathmandu",
   },
   {
     icon: Flame,
@@ -66,6 +85,8 @@ const events: {
     description:
       "Continued his sadhana in the deep Amarkantak forest for nearly 20 years after his grandfather's passing. He later described the moment of God-realization simply: “God came in a flash. All the problems were solved.”",
     source: "site",
+    image: commons("Narmada Kund, Amarkantak.JPG", 900),
+    imageAlt: "Narmada Kund, the sacred source pool at Amarkantak",
   },
   {
     icon: Landmark,
@@ -74,6 +95,8 @@ const events: {
     description:
       "Came out of the forest and took monastic initiation at Sringeri Math, founded by Adi Shankaracharya, receiving the name Govindananda Bharati.",
     source: "site",
+    image: commons("Vidyashankara Temple at Shringeri.jpg", 900),
+    imageAlt: "Vidyashankara Temple at Sringeri Sharada Peetham",
   },
   {
     icon: Compass,
@@ -82,6 +105,8 @@ const events: {
     description:
       "Undertook a pilgrimage of tens of thousands of miles across more than fifty countries — reportedly some eighty percent of it on foot — travelling through Europe, the Americas, the Pacific, and the Far East before returning to India.",
     source: "research",
+    image: commons("RMS Oceanic (1899) (51000282357).jpg", 900),
+    imageAlt: "An early-1900s ocean liner, typical of the era's long sea voyages",
   },
   {
     icon: Users,
@@ -90,6 +115,8 @@ const events: {
     description:
       "According to several independent biographical accounts, his travels brought him into contact with figures such as Queen Victoria, U.S. President Theodore Roosevelt, Kaiser Wilhelm II, and Queen Emma of the Netherlands, among others.",
     source: "research",
+    image: commons("President Theodore Roosevelt, 1904.jpg", 900),
+    imageAlt: "President Theodore Roosevelt, 1904",
   },
   {
     icon: Mountain,
@@ -98,6 +125,8 @@ const events: {
     description:
       "Entered Nepal from the east after crossing the Himalaya, staying around Pashupatinath and the neighbouring Gokarna, Kiranteshwar and Godawari areas, and for some years on Shivapuri Hill north of Kathmandu — from which he came to be known, in Nepal and the world, as The Shivapuri Baba.",
     source: "site",
+    image: commons("Kathmandu valley scene Shivapuri Nagarjun.JPG", 900),
+    imageAlt: "Kathmandu valley seen from Shivapuri Nagarjun National Park",
   },
   {
     icon: Flower2,
@@ -106,6 +135,8 @@ const events: {
     description:
       "Left his body at around 6:00 AM at his forest retreat (Kuti) in Dhruvasthali, east of Pashupatinath Temple, after 37 years in Nepal. He is traditionally said to have lived 137 years — an extraordinary claim that independent historians have not been able to verify.",
     source: "site",
+    image: commons("A view of Bagmati River in Shivapuri Nagarjun National Park.jpg", 900),
+    imageAlt: "The Bagmati River near Shivapuri, close to Pashupatinath",
   },
 ];
 
@@ -129,6 +160,21 @@ export default function TimelinePage() {
       </p>
 
       <section className="mb-14">
+        <div className="animate-in fade-in-0 relative mb-6 overflow-hidden rounded-2xl border border-border shadow-sm duration-700">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={astroBanner}
+            alt="The night sky — stars and a spiral galaxy"
+            loading="lazy"
+            className="h-56 w-full object-cover sm:h-72"
+          />
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-t from-black/85 via-black/30 to-black/10 px-4 text-center">
+            <p className="font-accent text-3xl text-amber-100 sm:text-4xl">Mūla Nakshatra</p>
+            <p className="mt-2 text-sm text-amber-100/80 sm:text-base">
+              1826 (Bhadra, B.S. 1883) — Malabar, Kerala
+            </p>
+          </div>
+        </div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           {astroFacts.map(({ icon: Icon, label, value }) => (
             <div
@@ -178,16 +224,27 @@ export default function TimelinePage() {
                 <span className="absolute top-0.5 -left-[2.55rem] flex size-9 items-center justify-center rounded-full border border-primary/30 bg-accent text-primary shadow-sm sm:-left-[3.05rem] sm:size-10">
                   <Icon className="size-4 sm:size-5" />
                 </span>
-                <p className="text-xs font-semibold tracking-wide text-primary uppercase">
-                  {event.year}
-                </p>
-                <h3 className="mt-1 text-lg font-bold text-foreground">{event.title}</h3>
-                <p className="mt-2 leading-7 text-foreground/85">{event.description}</p>
-                {event.source === "research" && (
-                  <span className="mt-2 inline-block rounded-full bg-muted px-2.5 py-0.5 text-[0.7rem] font-medium text-muted-foreground">
-                    from independent research
-                  </span>
-                )}
+                <div className="flex flex-col gap-4 sm:flex-row">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={event.image}
+                    alt={event.imageAlt}
+                    loading="lazy"
+                    className="h-40 w-full shrink-0 rounded-xl border border-border object-cover shadow-sm sm:h-28 sm:w-40"
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs font-semibold tracking-wide text-primary uppercase">
+                      {event.year}
+                    </p>
+                    <h3 className="mt-1 text-lg font-bold text-foreground">{event.title}</h3>
+                    <p className="mt-2 leading-7 text-foreground/85">{event.description}</p>
+                    {event.source === "research" && (
+                      <span className="mt-2 inline-block rounded-full bg-muted px-2.5 py-0.5 text-[0.7rem] font-medium text-muted-foreground">
+                        from independent research
+                      </span>
+                    )}
+                  </div>
+                </div>
               </div>
             );
           })}
@@ -214,6 +271,10 @@ export default function TimelinePage() {
             </li>
           ))}
         </ul>
+        <p className="mx-auto mt-8 max-w-xl text-center text-xs text-muted-foreground">
+          Illustrative photographs of places and figures on this page are courtesy of Wikimedia
+          Commons contributors, not depictions of Baba himself.
+        </p>
       </section>
     </div>
   );
