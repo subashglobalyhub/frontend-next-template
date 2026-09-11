@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Clock, MapPin, Flower2 } from "lucide-react";
 import { RichContent } from "@/components/rich-content";
 import { PageHeading } from "@/components/page-heading";
+import { MapEmbed } from "@/components/map-embed";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -27,6 +29,45 @@ export default function ContactPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
       <PageHeading>Contact</PageHeading>
+
+      <section className="mb-12 grid gap-4 sm:grid-cols-3">
+        <div className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-5 text-center shadow-sm">
+          <Clock className="size-6 text-primary" />
+          <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
+            Visiting Hours
+          </p>
+          <p className="font-heading font-semibold text-foreground">6:00 AM – 5:00 PM</p>
+        </div>
+        <div className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-5 text-center shadow-sm">
+          <MapPin className="size-6 text-primary" />
+          <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
+            Location
+          </p>
+          <p className="font-heading font-semibold text-foreground">
+            Tilganga, Kathmandu, Nepal
+          </p>
+        </div>
+        <div className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-5 text-center shadow-sm">
+          <Flower2 className="size-6 text-primary" />
+          <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
+            An Open Invitation
+          </p>
+          <p className="font-heading font-semibold text-foreground">Silent Meditation</p>
+        </div>
+      </section>
+
+      <blockquote className="font-accent mx-auto mb-12 max-w-xl text-center text-xl leading-snug text-foreground/90">
+        “We Welcome you to visit this serene Samadhi Mandir of Sree Shivapuri Baba for silent
+        meditation.”
+      </blockquote>
+
+      <section className="mb-12">
+        <MapEmbed
+          query="Tilganga, Kathmandu, Nepal"
+          title="Map showing Tilganga, Kathmandu, Nepal — near the Samadhi Mandir"
+        />
+      </section>
+
       <RichContent html={content} />
     </div>
   );

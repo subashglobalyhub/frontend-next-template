@@ -113,13 +113,14 @@ export default function Home() {
           </h2>
           <p className="text-justify leading-7 text-foreground/85">
             The aim of this website is to share the teachings of The God Realized Siddha
-            MahaPurusha Shree Shivapuri Baba, in this 21st Century to the humanity.
+            MahaPurusha Shree Shivapuri Baba, in this 21st Century to the humanity. We welcome
+            you to visit this serene Samadhi Mandir of Sree Shivapuri Baba for silent meditation.
           </p>
           <Link
-            href="/about-shivapuri-baba"
+            href="/contact"
             className="mt-3 inline-block text-sm font-medium text-primary hover:underline"
           >
-            (more&hellip;)
+            Plan your visit &rarr;
           </Link>
         </div>
 

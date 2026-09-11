@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { MapPin } from "lucide-react";
 import { RichContent } from "@/components/rich-content";
 import { PageHeading } from "@/components/page-heading";
 
@@ -36,6 +38,23 @@ export default function AboutAashramPage() {
       />
       <PageHeading>About Samadhi Mandir</PageHeading>
       <RichContent html={content} />
+
+      <Link
+        href="/contact"
+        className="group mt-4 flex items-center justify-between gap-4 rounded-2xl border border-primary/30 bg-accent/40 px-6 py-4 transition-colors hover:bg-accent/70"
+      >
+        <div className="flex items-center gap-3">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+            <MapPin className="size-5" />
+          </span>
+          <div>
+            <p className="font-semibold text-foreground">Planning a pilgrimage?</p>
+            <p className="text-sm text-muted-foreground">
+              Visiting hours, location and contact details for the Samadhi Mandir.
+            </p>
+          </div>
+        </div>
+      </Link>
     </div>
   );
 }

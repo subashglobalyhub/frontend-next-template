@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Quote } from "lucide-react";
 import { RichContent } from "@/components/rich-content";
 import { PageHeading } from "@/components/page-heading";
 
@@ -6,7 +7,7 @@ export const metadata: Metadata = {
   title: "Teaching",
 };
 
-const content = `
+const contentBeforeMeditation = `
 <p><span style="text-decoration: underline;">To recognize, realize and experience <strong>Supreme Self</strong> and <strong>SUPREME POWER- </strong>the truth </span></p>
 <p><em>Baba </em>has defined His teachings as <em>Swadharma Sadhana</em>, which he also calls as Right Life. Baba’s Teachings to realize GOD is simple. His teaching is Right Life (SWADHARMA) which means Devotion And Discrimination.</p>
 <p>Right Life comprises following::</p>
@@ -43,6 +44,9 @@ const content = `
 <li>Read the Books like Bhagavad Gita, Bhagavata, Ramayana, Mahabharata, Books On Buddha, Christ, Mohammad and other spiritual personalities.</li>
 </ul>
 <p>After fulfilling the duties of the body, one should also keep the mind in good condition. As mentioned above, he should thoroughly study and practice the Divine Virtues. If one goes on practicing these qualities, he can train his mind and implement it in his daily life, as a result of which his mind will not be distracted from its duties and will not confer to speculations. Without studying chemistry, we cannot study medicine. Without studying mathematics, one cannot be an engineer. Therefore, these virtues are the strength of the mind by the practice of which the mind does not get distracted and one will perform one’s own needful duty perfectly and contemplates only on his Higher Self and ultimately God.</p>
+`;
+
+const contentAfterMeditation = `
 <h3><u>Spiritual Discipline</u></h3>
 <ul>
 <li>Devote maximum time in God worship.</li>
@@ -67,7 +71,19 @@ export default function TeachingPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
       <PageHeading>Teaching</PageHeading>
-      <RichContent html={content} />
+      <RichContent html={contentBeforeMeditation} />
+
+      <div className="relative my-10 overflow-hidden rounded-2xl border border-primary/30 bg-accent/40 p-8 text-center">
+        <Quote className="mx-auto mb-3 size-7 fill-primary/15 text-primary" />
+        <p className="font-accent text-2xl leading-snug text-foreground sm:text-3xl">
+          “If you go on passing your time meditating on God, God will come in a flash.”
+        </p>
+        <p className="mt-4 text-sm font-medium tracking-wide text-muted-foreground uppercase">
+          Shivapuri Baba, on Spiritual Discipline
+        </p>
+      </div>
+
+      <RichContent html={contentAfterMeditation} />
     </div>
   );
 }
